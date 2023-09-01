@@ -1,13 +1,18 @@
-function thermo(temperature) {
-    if (temperature.length !== 0) {
-       return temperature.reduce((lowestTemperature, currentTemperature) => {
-            if (Math.abs(lowestTemperature) > Math.abs(currentTemperature) && currentTemperature>0) {
-                return Math.abs(currentTemperature)
-            }
-           return lowestTemperature
-       })
-    } 
-    else return 0
+function thermo(temperatures) {
+
+    if (temperatures.length === 0 && temperatures.length < 10000 ) {
+        return 0
+    }
+    
+    return temperatures.reduce((lowestTemperature, currentTemperature) => {
+        if (Math.abs(lowestTemperature) > Math.abs(currentTemperature) ) {
+            return currentTemperature
+        }
+        if (Math.abs(lowestTemperature) == Math.abs(currentTemperature)) {
+            return Math.max(currentTemperature,lowestTemperature)
+        }
+        return lowestTemperature
+    },temperatures[0])
 }
      
 
