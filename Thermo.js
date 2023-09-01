@@ -1,6 +1,6 @@
 function thermo(temperatures) {
 
-    if (temperatures.length === 0 && temperatures.length < 10000 ) {
+    if (temperatures.length === 0 && temperatures.length > 10000 ) {
         return 0
     }
     
