@@ -1,6 +1,6 @@
 function thermo(temperatures) {
 
-    if (temperatures.length === 0 && temperatures.length > 10000 ) {
+    if (temperatures.length === 0 || temperatures.length > 10000 ) {
         return 0
     }
     
@@ -8,7 +8,7 @@ function thermo(temperatures) {
         if (Math.abs(lowestTemperature) > Math.abs(currentTemperature) ) {
             return currentTemperature
         }
-        if (Math.abs(lowestTemperature) == Math.abs(currentTemperature)) {
+        else if (Math.abs(lowestTemperature) == Math.abs(currentTemperature)) {
             return Math.max(currentTemperature,lowestTemperature)
         }
         return lowestTemperature
