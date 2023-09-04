@@ -27,7 +27,7 @@ describe('fizzBuzz', () => {
   });
 
   test('should handle an array of 100 numbers', () => {
-    let result = "Fizz".repeat(100)
+    const result = "Fizz".repeat(100)
     const list = Array.from({ length: 100 }, () => 3);
      expect(fizzBuzz(list)).toBe(result);
   });
