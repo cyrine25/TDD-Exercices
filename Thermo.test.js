@@ -4,11 +4,12 @@ const thermo = require('./Thermo');
 test('should return 0', () => {
   expect(thermo([])).toBe(0)
 })
-test('should handle an array of 10001 temperatures', () => {
-    const temperatures = Array.from({ length: 10001 }, () =>
-      Math.floor(Math.random() * 100) - 50
-    );
-     expect(thermo(temperatures)).toBe(0);
+test('should return an error when The number of temperatures exceeds the maximum limit of 10000', () => {
+    const callThermo = () => {
+        const temperatures = Array.from({ length: 10001 }, () => 1);
+        thermo(temperatures);
+      };
+     expect(callThermo).toThrow('The number of temperatures exceeds the maximum limit of 10000');
   });
 
 test('should return the lowest positive number in a list of positives temperatures', () => {

@@ -1,5 +1,5 @@
-function FizzBuzz(numbers) {
-    const FizzBuzzArrayResult = numbers.map((number) => {
+function fizzBuzz(numbers) {
+    const fizzBuzzResult = numbers.map((number) => {
         if (number % 3 === 0 && number % 5 === 0) {
             return 'FizzBuzz'
         }
@@ -8,13 +8,14 @@ function FizzBuzz(numbers) {
         }
         if (number % 5 === 0) {
             return 'Buzz'
-        } else {
+        }
+        if(number % 3 !== 0 && number % 5 !== 0){
             return number.toString()
         }
     })
-    const finalResult = FizzBuzzArrayResult.join('');
+    const finalResult = fizzBuzzResult.join('');
 
   return finalResult;
     
 }
-module.exports = FizzBuzz;
+module.exports = fizzBuzz;
