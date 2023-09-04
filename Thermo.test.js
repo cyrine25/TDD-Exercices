@@ -4,6 +4,12 @@ const thermo = require('./Thermo');
 test('should return 0', () => {
   expect(thermo([])).toBe(0)
 })
+test('should handle an array of 10001 temperatures', () => {
+    const temperatures = Array.from({ length: 10001 }, () =>
+      Math.floor(Math.random() * 100) - 50
+    );
+     expect(thermo(temperatures)).toBe(0);
+  });
 
 test('should return the lowest positive number in a list of positives temperatures', () => {
     expect(thermo([4,6,2,3])).toBe(2)

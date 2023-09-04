@@ -8,7 +8,7 @@ function thermo(temperatures) {
         if (Math.abs(lowestTemperature) > Math.abs(currentTemperature) ) {
             return currentTemperature
         }
-        else if (Math.abs(lowestTemperature) == Math.abs(currentTemperature)) {
+        if (Math.abs(lowestTemperature) === Math.abs(currentTemperature)) {
             return Math.max(currentTemperature,lowestTemperature)
         }
         return lowestTemperature
