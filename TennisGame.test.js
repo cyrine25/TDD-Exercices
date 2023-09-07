@@ -1,27 +1,48 @@
-const {addPoints,getRealGameResullt,getGameSet} = require('./TennisGame');
+const { addPoints, getGameWinner, getRealGameResult, getSetResult } = require('./TennisGame.js');
 
 describe('Tennis Game', () => {
-    beforeEach(() => {
-        gameScore = [0, 0]
-        setScore=[0,0]
-      });
-    test('should return gameScore with each player scoring', () => {
-       
-        expect(addPoints('1', gameScore)).toStrictEqual([1, 0])
-        expect(addPoints('2',gameScore)).toStrictEqual([0,1])
+
+    test('should add points to a player score', () => {
+        const players = {
+            'P1': { score: 3, setScore: 0 },
+            'P2': { score: 0, setScore: 0 }
+          }
+        expect(addPoints('P1',players)).toStrictEqual({ score: 4, setScore: 1 })
+        expect(addPoints('P2',players)).toStrictEqual({ score: 1, setScore: 0 })
+  })
+
+    test('should return Game Winner', () => {
+        const playersFirstTestCase = {
+            'P1': { score: 4, setScore: 1 },
+            'P2': { score: 1, setScore: 0 }
+          }
+        expect(getGameWinner('P1', playersFirstTestCase)).toBe(true)
+        expect(getGameWinner('P2', playersFirstTestCase)).toBe(false)
+        const playersSecondeTestCase = {
+            'P1': { score: 0, setScore: 0 },
+            'P2': { score: 1, setScore: 0 }
+          }
+        expect(getGameWinner('P1', playersSecondeTestCase)).toBe(false)
+        expect(getGameWinner('P2', playersSecondeTestCase)).toBe(false)
     })
 
-    test('should transforms gameScore', () => {
-        expect(getRealGameResullt([1,2])).toStrictEqual([15, 30])
-        expect(getRealGameResullt([2,3])).toStrictEqual([30, 40])
-    })
-    
-    test('should return set result id first player win', () => {
-    expect(getGameSet([45,30],setScore)).toStrictEqual('(1,0)')
+
+    test('should calculate the real game result', () => {
+        const players = {
+            'P1': { score: 3, setScore: 1 },
+            'P2': { score: 2, setScore: 0 }
+          }
+        const result = getRealGameResult(players)
+        expect(result['P1']).toBe(40)
+        expect(result['P2']).toBe(30)
     })
 
-    test('should return set result if seconde player win', () => {
-    expect(getGameSet([30,45],setScore)).toStrictEqual('(0,1)')
-    })
-
+    test('should get the set result', () => {
+        const players = {
+            'P1': { score: 3, setScore: 1 },
+            'P2': { score: 1, setScore: 2 }
+          }
+        const result = getSetResult(players)
+        expect(result).toBe('(1,2)')
+  })
 })
