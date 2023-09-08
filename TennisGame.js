@@ -9,10 +9,18 @@ const getGameWinner = (playerName, players) => {
 const addPoints=(playerName,players)=> {
   const updatedPlayers = { ...players }
   
-  updatedPlayers[playerName].score += 1
+  updatedPlayers[playerName] = {
+    ...updatedPlayers[playerName],
+    score: updatedPlayers[playerName].score + 1,
+  }
 
     if (updatedPlayers[playerName].score > 3 && getGameWinner(playerName,updatedPlayers)) {
-      updatedPlayers[playerName].setScore += 1
+      {
+        updatedPlayers[playerName] = {
+          ...updatedPlayers[playerName],
+          setScore: updatedPlayers[playerName].setScore + 1,
+        }
+      }
       
   }
   return updatedPlayers[playerName]
